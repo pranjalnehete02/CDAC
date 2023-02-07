@@ -6,7 +6,6 @@ int area(int a){
 }
 
 int main(){
-
     int a;
     cout<<"Enter the value of r";
     cin>>a;
