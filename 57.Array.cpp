@@ -1,3 +1,5 @@
+//cyclically reversing the array by k position
+
 #include<iostream>
 using namespace std;
 

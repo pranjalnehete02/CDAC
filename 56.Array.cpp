@@ -1,3 +1,4 @@
+//cyclically reversing the array by 1 position
 #include<iostream>
 using namespace std;
 
