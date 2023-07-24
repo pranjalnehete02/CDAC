@@ -25,13 +25,23 @@ int main(){
 */
 
 
-
 #include<iostream>
 using namespace std;
 
-int main(){
-
-    while(T--)
-
-    return 0;
+int findSum(string str)
+{
+int sum = 0;
+for (char ch : str)
+{
+if (isdigit(ch))
+{
+sum += ch - '0';
+}
+}
+return sum;
+}
+int main()
+{
+string str="Pr22e44pinsta";
+cout << "Sum :" << findSum(str) << endl;
 }
