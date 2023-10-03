@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     class Solution{
     public:
-        vector<int> nextGreaterElement(vector<int>& num1, vector<int>& num2);
+        {vector<int> nextGreaterElement(vector<int> num1, vector<int> num2);
             unordered_map<int,int>umap;
             stack<int>st;
             int n = num2.size();
@@ -24,6 +24,7 @@ int main(){
             }
 
             return ans;
+            }
 
     };
 
@@ -53,7 +54,7 @@ now maps/binds the 5->15,
 
 Logic:
             for(int i= n-1; i>=0; i--){
-                while(!st.empty() && st.top <= ele){
+                while( st.top <= ele  &&    !st.empty() ){
                     st.pop();
                 }
                 int res = (st.empty()) ? -1 : st.pop();
