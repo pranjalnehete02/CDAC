@@ -1,4 +1,4 @@
-/*
+/*remove duplicate
 we have to remove the duplicates of the consecutive elements in the STRING
 
 1.find the size of string
