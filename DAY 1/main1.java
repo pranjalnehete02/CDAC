@@ -23,7 +23,10 @@ public static int deleteFromPosition(int[] arr, int n, int pos){
 
         int arr[] = {1, 2, 3, 4, 5};
         int n = arr.length;
+
+        System.out.println("Enter the posotion: ");
         int pos = sc.nextInt();
+
 
         int finalArr = deleteFromPosition(arr, n, pos);
         System.out.println(finalArr);
