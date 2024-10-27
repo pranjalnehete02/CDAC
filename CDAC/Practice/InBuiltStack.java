@@ -1,6 +1,12 @@
 import java.util.Stack;
 import java.util.Scanner;
 
+
+                                //Internally stack is a class 
+                                //where as queue data structure is an Interface
+
+
+
 public class InBuiltStack {
     
     public static void main(String[] args) {
