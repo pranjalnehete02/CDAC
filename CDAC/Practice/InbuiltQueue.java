@@ -1,6 +1,12 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
+
+                                //Internally stack is a class 
+                                //where as queue data structure is an Interface
+                                //The linkedlist can be modified as the First node to Head and the end as the tail....
+                                //and hence the queue is implemented with linkedklist
+
 public class InbuiltQueue {
     public static void main(String[] args) {
         
