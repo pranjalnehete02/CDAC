@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 class Graph {
-    private int V; // number of nodes
-    private LinkedList<Integer>[] adj; // adjacency list
+    private int V;
+    private LinkedList<Integer>[] adj; 
 
     public Graph(int v) {
         V = v;
@@ -13,11 +13,11 @@ class Graph {
     }
 
     void addEdge(int v, int w) {
-        adj[v].add(w); // adding an edge to the adjacency list (edges are bidirectional in this example)
+        adj[v].add(w); 
     }
 
     void DFSUtil(int vertex, boolean[] visited) {
-        visited[vertex] = true; // mark the node as explored
+        visited[vertex] = true; 
         System.out.print(vertex + " ");
         for (int neighbor : adj[vertex]) {
             if (!visited[neighbor]) {
@@ -27,7 +27,7 @@ class Graph {
     }
 
     void DFS(int v) {
-        boolean[] visited = new boolean[V]; // initialize a new boolean array to store the details of explored nodes
+        boolean[] visited = new boolean[V]; 
         DFSUtil(v, visited);
     }
 
