@@ -1,6 +1,6 @@
 package com.cdac.ImplementLL;
 
-public class CustomLinkedList {
+public class SinglyLinkedList {
 	class Node{
 		int data;
 		Node next;
