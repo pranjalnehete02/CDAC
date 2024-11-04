@@ -51,7 +51,7 @@ public class CustomLinkedList {
 			addAtFront(data);
 		}else {
 			Node current = head;
-			for(int i = 1; i < position -1 && current.next != null; i++) {
+			for(int i = 1; (i < position -1) && (current.next != null); i++) {
 				current = current.next;
 			}
 			newNode.next = current.next;
@@ -59,6 +59,10 @@ public class CustomLinkedList {
 		}
 		
 	}
+	
+	
+							//REMOVE
+	
 	
 }
 
