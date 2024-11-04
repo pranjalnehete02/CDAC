@@ -62,7 +62,61 @@ public class CustomLinkedList {
 	
 	
 							//REMOVE
+	//Remove Front
+	public void rmAtFront() {
+		//checking if the head is not empty
+		if(head != null) {
+			head = head.next;
+		}
+	}
 	
+	public void rmAtEnd() {
+		//check if head is empty
+		if(head == null) {
+			return;
+		}
+		//check if only one element is present
+		if(head.next == null) {
+			head = null;
+		}else {
+			Node current = head;
+			while(current.next.next != null) {
+				current = current.next;
+			}
+			current.next = null;
+		}
+	}
 	
+	public void rmAtPos(int position) {
+		if(head == null || position <= 1) {
+			rmAtFront();
+		}
+		else {
+			Node current = head;
+			for(int i = 1; i < position - 1 && current.next != null; i++) {
+				current = current.next;
+			}
+			if(current.next != null) {
+				current.next = current.next.next;
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
