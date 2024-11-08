@@ -1,0 +1,146 @@
+Creating database
+
+create database dac;
+--------------------------
+
+Display existing databases
+
+show databases;
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dac                |
+| empdb              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+----------------------------
+
+Connecting to the database
+
+use dac;
+
+-----------------------------
+
+Display tables in current database
+
+show tables;
+
+---------------------------------------
+
+creating table for student schema
+student(roll,name,dob,per)
+
+create table student
+(roll int,
+ name varchar(15),
+ dob date,
+ per decimal(5,2)
+);
+-----------------------------
+
+describing table structure
+describe student;
+
+mysql> describe student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| roll  | int          | YES  |     | NULL    |       |
+| name  | varchar(15)  | YES  |     | NULL    |       |
+| dob   | date         | YES  |     | NULL    |       |
+| per   | decimal(5,2) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+-------------------------
+
+adding data in the table(inserting data)
+
+insert into student
+values(1,'Raj','2009-10-2',67.45);
+---------------------------------------
+
+display the table contents(projecting data)
+
+select * 
+from student;
+------------------------------------
+
+insert into student
+values(2,'Yash','2006-11-12',null),
+(3,'Geeta',null,89.00)
+
+Inserting multiple values
+insert into student
+values(4,'Seema','2007-11-12',90),
+(5,'Sameer',null,92.00)
+
+-------------------------------------
+
+
+
+restricting rows using where clause
+
+mysql> insert into student
+    -> values(4,'Seema','2007-11-12',90),
+    -> (5,'Sameer',null,92.00)
+    -> ;
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+--------+------------+-------+
+| roll | name   | dob        | per   |
++------+--------+------------+-------+
+|    1 | Raj    | 2009-10-02 | 67.45 |
+|    2 | Yash   | 2006-11-12 |  NULL |
+|    3 | Geeta  | NULL       | 89.00 |
+|    4 | Seema  | 2007-11-12 | 90.00 |
+|    5 | Sameer | NULL       | 92.00 |
++------+--------+------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select name,roll
+    -> from student
+    -> where roll<4;
++-------+------+
+| name  | roll |
++-------+------+
+| Raj   |    1 |
+| Yash  |    2 |
+| Geeta |    3 |
++-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select name,roll
+    -> from student
+    -> where roll<4 and per>75;
++-------+------+
+| name  | roll |
++-------+------+
+| Geeta |    3 |
++-------+------+
+1 row in set (0.00 sec)
+
+
+select name,roll
+from student
+where roll<4;
+
+select name,roll
+from student
+where roll<4 and per>75;
+
+-------------------------------------------
+
+
+

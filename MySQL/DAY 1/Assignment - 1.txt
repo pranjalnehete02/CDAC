@@ -1,0 +1,100 @@
+
+
+create insert and basic select
+
+Create  following Tables. Use appropriate datatypes. Insert given rows in the tables.
+
+create table vehicle(  vid int,  vname varchar(20),  price int,  discount int,  milage int,  details varchar(40));
+
+1.vehicle
+
+vid   vname          price       discount        milage           details
+-------------------------------------------------------------------------------------------------
+1     Activa         80000         10            35              Two  wheeler. Sturdy.Milage 30 km
+2     Santro         95000         20            20              Product of Hyandai.
+3     Yamaha         160000        5             70              Sturdy and good milage 
+4     i-10           300000        8             18              Good small car
+5     WaganR         250000        10            25              Good milage car
+6     Hero Splendor  75000         9             65              Best bike
+7     Royal Enfild   190000        5             40              a royal bike
+
+Note :discount is given in percentage.
+
+2. customer  
+
+create table customer(custid int, cname varchar(15), location varchar(12))
+
+
+custid    cname          location 
+----------------------------------
+1         Nilima         Pimpri
+2         Ganesh         Pune
+3         Kishor         Kothrud
+4         Priya          Aundh
+
+
+3. salesman
+
+create table salesman(sid int, sname varchar(12), city varchar(12), experience int)
+
+sid    sname         city           experience
+----------------------------------------------
+10      Rajesh       mumbai           5
+11      Seema        Pune             8 
+12      Shailesh     Nagpur           7 
+13      Rakhi        Pune             2
+
+
+
+1. Display names of salesmen who work in Pune.   
+ 
+2. Delete customer from Pimpri area.
+
+3. Add some new customers 
+ 'Geeta' with custid 5 and area as 'Pimpri'. 
+ 'Raj'   with custid 6 and area as 'Aundh'  
+ 'Yash'  with custid 7 and area as 'Aundh'
+
+4. Delete customer from area Aundh whose name is Priya. 
+
+5. Display information of vehicle , Royal Enfild.
+
+6. Display information of all Bikes.
+
+7. If buying price of the vehicle is 75000 then change it to 80000.
+ 
+8. Display information of vehicle i-10.
+
+9. Display vid, vname, price, details and total price for each vehicle. total price = price - discount
+ 
+10. Display all vehicles whose price is less than 100000.
+ 
+11. Display all the information of salesmen having experience more than 5 years.
+ 
+12. Create a copy of table salesman as salesman1.
+
+13. For the given schema, create the table and solve following queries
+
+employee(eno, ename, basic, incentives)  
+
+eno    ename      basic        incentives
+------------------------------------------
+1      Rajesh     20000         1500
+2      Sarita     25000         1000
+3      Meera      15000         3000
+4      Jitesh     30000         500
+5      Ramesh     12000         3000
+
+ 1. List all employees having basic>15000
+ 
+ 2. Change incentive of Jitesh to 1000.
+ 
+ 3. Increase the salary of all employees by 5% who are earning less than 20000 as a basic pay. Update in the table.
+ 
+ 4. New employee Ajay joins the firm. His eno is 20, basic is 16000 and he is not eligible for incentives. Store this information in  
+    table.
+ 
+ 5. Meera leaves the company. Make necessary changes in table.
+ 
+ 6. Ramesh is promoted as Head Clerk and now earns salary as 60000. Write a query.    
+ 
