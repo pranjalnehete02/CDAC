@@ -1,0 +1,68 @@
+Restricting rows using like operator and reg_exp
+
+1.Find all employees with name ending with R . 
+ 
+2. Find all employees with name starting with M and ending with R.
+ 
+3. To find all employees with name starting with either M or A.
+ 
+4. List the employee  name having letter 'L' as the second character.
+ 
+5. Find all employees with name having L at 3 rd position.
+ 
+6. To list all employees with name ending by ES.
+ 
+7. To list all employees with job starting with C and ending with K.
+ 
+8. To find all employees with name starting with either M or A and last character as either R or E.
+ 
+9. To find all employee with name starting with A or M and ending with E.
+ 
+10. Find all employees with name starting with A and ending with N, or it may start with S and end with H.
+ 
+11. Find all employees with name starting with M, having  L at 3 rd position and ends with R.
+ 
+12. Find all employees with name having L at 3 rd position and E at second last position.
+ 
+13. Find all employees with name not starting with A or M
+ 
+14. Display all employees with sal >1000 and sal<3000 and job has A at starting position and ends with T.
+ 
+15. Write a query  to display empno, ename, sal, commission, increased sal by 10% and for all employees  whose  name starts with A,M or S.
+ 
+16. Display all employees whose name starts with A and ends with either N or S, or works in dept 10.   
+ 
+17. List all departments whose name has atleast 8 characters.
+ 
+18. List the employees name having 'E' as a second last character.
+ 
+19. List the details of the employee , whose names start with ‘A’ and end with ‘S’ or whose names contains N as the second or third     character, and end with either ‘N’ or ‘S’.
+ 
+20. List employees whose name starts with either 'A' or 'S' in dept 20.
+ 
+21. To list all employees with job starting with C , E at 3rd position and  ending with K.
+ 
+22. To list all employees with job containing L at third position and M at third last position.
+ 
+23. To list all employees with comm is null and name starts with ‘S’
+ 
+24. List employees in all dept whose salary not in the range of 2000 to 3000 with the job which is having a  string called 'MAN' at the end.
+ 
+25. List all the employee whose name does not end with 'S' in dept 20 and 30?
+ 
+26. Display list all employees whose name ends with ER.
+ 
+27. Display all employees where comm is null and name starts with ‘S’.
+ 
+28. Display all rows where comm is null.
+ 
+
+19. Create table dept10 same as dept and table emp10 same as emp.
+    From tables emp10  and dept10 display the following data. 
+    eno, ename, sal, dno and dept name.
+
+
+
+====================================================================
+
+ 
