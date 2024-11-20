@@ -1,0 +1,529 @@
+
+-------------------------------------------- Restricting and Sorting Data-------------------------------------------
+The HR department needs your assistance in creating some queries.
+1.	Because of budget issues, the HR department needs a report that displays the last name and salary of employees earning more than $12,000.
+
+SELECT last_name, salary FROM	employees
+WHERE	salary > 12000;
+
+2.	Open a new SQL Worksheet. Create a report that displays the last name and department number for employee number 176.
+
+SELECT last_name, department_id FROM	employees
+WHERE	employee_id = 176;
+
+3.	The HR department needs to find high-salary and low-salary employees. Modify lab_03_01.sql to display the last name and salary for all employees whose salary is not in the range $5,000 through $12,000.
+SELECT last_name, salary FROM	employees
+WHERE	salary NOT BETWEEN 5000 AND 12000;
+
+4.	Modify above query  to list the last name and salary of employees who earn between
+$5,000 and $12,000, and are in department 20 or 50. Label the columns Employee and Monthly Salary, respectively.
+6.	Modify lab_03_03.sql to list the last name and salary of employees who earn between
+$5,000 and $12,000, and are in department 20 or 50. Label the columns Employee and Monthly Salary, respectively.
+
+5.	Create a report to display the last name, job ID, and hire date for employees with the last names of Matos and Taylor. Order the query in ascending order by hire date.
+SELECT	last_name, job_id, hire_date FROM	employees
+WHERE	last_name IN ('Matos', 'Taylor')
+ORDER BY hire_date;
+
+6.	Display the last name and department ID of all employees in departments 20 or 50 in ascending alphabetical order by last_name.
+SELECT	last_name, department_id FROM	employees
+WHERE	department_id IN (20, 50)
+ORDER BY last_name ASC;
+
+
+7.	The HR department needs a report that displays the last name and hire date of all employees who were hired in 2006.
+SELECT	last_name, hire_date FROM	employees
+WHERE	hire_date >= '01-JAN-06' AND hire_date < '01-JAN-07';
+
+8.	Create a report to display the last name and job title of all employees who do not have a manager.
+SELECT	last_name, job_id FROM	employees
+WHERE	manager_id IS NULL;
+
+
+9.	Create a report to display the last name, salary, and commission for all employees who earn commissions. Sort data in descending order of salary and commissions. Use the column’s numeric position in the ORDER BY clause.
+
+SELECT	last_name, salary, commission_pct FROM	employees
+WHERE	commission_pct IS NOT NULL
+ORDER BY 2 DESC, 3 DESC;
+
+
+10.	Display the last names of all employees where the third letter of the name is “a.”
+SELECT	last_name FROM	employees
+WHERE	last_name LIKE ' a%';
+
+
+11.	Display the last names of all employees who have both an “a” and an “e” in their last name.
+SELECT	last_name FROM	employees
+WHERE	last_name LIKE '%a%'
+AND	last_name LIKE '%e%';
+
+
+12.	Display the last name, job, and salary for all employees whose job is that of a sales representative or a stock clerk, and whose salary is not equal to $2,500, $3,500, or $7,000.
+SELECT	last_name, job_id, salary FROM	employees
+WHERE	job_id IN ('SA_REP', 'ST_CLERK')
+AND	salary NOT IN (2500, 3500, 7000);
+
+13.	Display the last name, salary, and commission for all employees whose commission amount is 20%. 
+SELECT	last_name "Employee", salary "Monthly Salary",
+commission_pct
+FROM	employees
+WHERE	commission_pct = .20;
+
+
+----------------------------------------------- Aggregate Function -------------------------------------
+The HR department needs the following reports:
+1.	Find the highest, lowest, sum, and average salary of all employees. Label the columns Maximum, Minimum, Sum, and Average, respectively. Round your results to the nearest whole number.
+SELECT ROUND(MAX(salary),0) "Maximum", ROUND(MIN(salary),0) "Minimum", ROUND(SUM(salary),0) "Sum",
+ROUND(AVG(salary),0) "Average" FROM employees;
+
+
+2.	Create a query that displays employees’ last names, and indicates the amounts of their salaries with asterisks. Each asterisk signifies a thousand dollars. Sort the data in descending order of salary. Label the column EMPLOYEES_AND_THEIR_SALARIES.
+SELECT last_name,
+rpad(' ', salary/1000, '*') EMPLOYEES_AND_THEIR_SALARIES
+FROM  employees ORDER BY salary DESC;
+
+------------------------------------------ Joins --------------------------------------------------------
+1.	Write a query for the HR department to produce the addresses of all the departments. Use the LOCATIONS and COUNTRIES tables. Show the location ID, street address, city, state or province, and country in the output. 
+SELECT location_id, street_address, city, state_province, country_name
+FROM	locations NATURAL JOIN countries;
+
+
+2.	The HR department needs a report of all employees with corresponding departments. Write a query to display the last name, department number, and department name for all the employees.
+SELECT last_name, department_id, department_name FROM	employees
+JOIN	departments
+USING (department_id);
+
+
+3.	The HR department needs a report of employees in Toronto. Display the last name, job, department number, and department name for all employees who work in Toronto.
+SELECT e.last_name, e.job_id, e.department_id, d.department_name FROM	employees e JOIN departments d
+ON	(e.department_id = d.department_id) JOIN	locations l
+USING (location_id)
+WHERE LOWER(l.city) = 'toronto';
+
+4.	Create a report to display employees’ last names and employee numbers along with their managers’ last names and manager numbers. Label the columns Employee, Emp#, Manager, and Mgr#, respectively. 
+SELECT w.last_name "Employee", w.employee_id "EMP#", m.last_name "Manager", m.employee_id "Mgr#"
+FROM	employees w JOIN employees m
+ON	(w.manager_id = m.employee_id);
+
+5.	Modifyabove to display all employees, including King, who has no manager. Order the results by employee number.
+SELECT w.last_name "Employee", w.employee_id "EMP#", m.last_name "Manager", m.employee_id "Mgr#"
+FROM	employees w
+LEFT	OUTER JOIN employees m
+ON	(w.manager_id = m.employee_id) ORDER BY 2;
+
+6.	Create a report for the HR department that displays employee last names, department numbers, and all employees who work in the same department as a given employee. Give each column an appropriate label. Save the script to a file named lab_07_06.sql. Run the query.
+SELECT e.department_id department, e.last_name employee, c.last_name colleague
+FROM	employees e JOIN employees c
+ON	(e.department_id = c.department_id) WHERE e.employee_id <> c.employee_id
+ORDER BY e.department_id, e.last_name, c.last_name;
+
+7.	The HR department needs a report on job grades and salaries. To familiarize yourself with the JOB_GRADES table, first show the structure of the JOB_GRADES table. Then create a query that displays the name, job, department name, salary, and grade for all employees.
+DESC JOB_GRADES;
+
+SELECT e.last_name, e.job_id, d.department_name, e.salary, j.grade_level
+FROM	employees e JOIN departments d
+ON	(e.department_id = d.department_id) JOIN	job_grades j
+ON	(e.salary BETWEEN j.lowest_sal AND j.highest_sal);
+
+8.	The HR department wants to determine the names of all employees who were hired after Davies. Create a query to display the name and hire date of any employee hired after employee Davies.
+SELECT e.last_name, e.hire_date
+FROM	employees e JOIN employees davies
+ON	(davies.last_name = 'Davies') WHERE davies.hire_date < e.hire_date;
+
+
+9.	The HR department needs to find the names and hire dates of all employees who were hired before their managers, along with their managers’ names and hire dates.
+SELECT w.last_name, w.hire_date, m.last_name, m.hire_date
+FROM employees w JOIN employees m
+ON (w.manager_id = m.employee_id)
+WHERE w.hire_date<m.hire_date
+
+
+ ------------------------------------------------ Using Subqueries to Solve Queries -------------------------
+ 
+1.	The HR department needs a query the to display  the last name and hire date of any employee in the same department as the employee whose name the user supplies (excluding that employee). For example, if the user enters Zlotkey, find all employees who work with Zlotkey (excluding Zlotkey).
+SELECT last_name, hire_date FROM	employees
+WHERE department_id = (SELECT department_id
+FROM	employees
+WHERE last_name = '&&Enter_name') AND	last_name <> 'Zlotkey';
+
+2.	Create a report that displays the employee number, last name, and salary of all employees who earn more than the average salary. Sort the results in ascending order by salary.
+SELECT employee_id, last_name, salary FROM	employees
+WHERE salary > (SELECT AVG(salary)
+FROM	employees)
+ORDER BY salary;
+
+3.	Write a query that displays the employee number and last name of all employees who work in a department with any employee whose last name contains the letter “u.” 
+SELECT employee_id, last_name FROM	employees
+WHERE department_id IN (SELECT department_id
+FROM	employees
+WHERE last_name like '%u%');
+
+4.	The HR department needs a report that displays the last name, department number, and job ID of all employees whose department location ID is 1700.
+SELECT last_name, department_id, job_id FROM	employees
+WHERE department_id IN (SELECT department_id
+FROM	departments
+WHERE location_id = 1700);
+
+5.	Create a report for HR that displays the last name and salary of every employee who reports to King.
+SELECT last_name, salary FROM	employees
+WHERE manager_id = (SELECT employee_id
+FROM	employees
+WHERE last_name = 'King');
+
+
+6.	Create a report for HR that displays the department number, last name, and job ID for every employee in the Executive department.
+SELECT department_id, last_name, job_id FROM	employees
+WHERE department_id IN (SELECT department_id
+FROM	departments
+WHERE department_name =
+'Executive');
+
+7.	Create a report that displays a list of all employees whose salary is more than the salary of any employee from department 60.
+SELECT last_name FROM employees WHERE salary > ANY (SELECT salary
+FROM employees
+WHERE department_id=60);
+
+8.	Modify above query in display the employee number, last name, and salary of all employees who earn more than the average salary and who work in a department with any employee whose last name contains the letter “u.” 
+SELECT employee_id, last_name, salary FROM	employees
+WHERE department_id IN (SELECT department_id
+FROM	employees
+WHERE last_name like '%u%') AND	salary > (SELECT AVG(salary)
+FROM	employees);
+
+------------------------------------: Using Set Operators :--------------------------
+
+1.	The HR department needs a list of department IDs for departments that do not contain the job ID ST_CLERK. Use the set operators to create this report.
+SELECT department_id FROM	departments MINUS
+SELECT department_id FROM	employees
+WHERE job_id = 'ST_CLERK';
+
+2.	The HR department needs a list of countries that have no departments located in them. Display the country IDs and the names of the countries. Use the set operators to create this report.
+SELECT country_id,country_name FROM countries
+MINUS
+SELECT l.country_id,c.country_name FROM locations l JOIN countries c ON (l.country_id = c.country_id) JOIN departments d
+ON d.location_id=l.location_id;
+
+3.	Produce a list of all the employees who work in departments 50 and 80. Display the employee ID, job ID, and department ID by using the set operators.
+SELECT employee_id, job_id, department_id FROM EMPLOYEES
+WHERE department_id=50 UNION ALL
+SELECT employee_id, job_id, department_id FROM EMPLOYEES
+WHERE department_id=80;
+
+4.	Create a report that lists the detail of all employees who are sales representatives and are currently working in the sales department.
+SELECT EMPLOYEE_ID FROM EMPLOYEES
+WHERE JOB_ID='SA_REP' INTERSECT
+SELECT EMPLOYEE_ID FROM EMPLOYEES
+WHERE DEPARTMENT_ID=80;
+
+----------------------------------------Managing Tables by Using DML Statements-------------------------------------------
+Insert data into the MY_EMPLOYEE table.
+1.	Create a table called MY_EMPLOYEE.
+
+CREATE TABLE my_employee
+(id int CONSTRAINT my_employee_id_pk PRIMARY Key,
+ last_name VARCHAR(25),
+first_name VARCHAR(25),
+userid VARCHAR(8), salary decimal(9,2));
+
+
+
+2.	Create an INSERT statement to add the first row of data to the MY_EMPLOYEE table from the following sample data. Do not list the columns in the INSERT clause.
+
+ID	LAST_NAME	FIRST_NAME	USERID	SALARY
+1	Patel	Ralph	rpatel	895
+2	Dancs	Betty	bdancs	860
+3	Biri	Ben	bbiri	1100
+4	Newman	Chad	cnewman	750
+5	Ropeburn	Audrey	aropebur	1550
+INSERT INTO my_employee
+VALUES (1, 'Patel', 'Ralph', 'rpatel', 895);
+
+3.	Populate the MY_EMPLOYEE table with the second row of the sample data from the preceding list. This time, list the columns explicitly in the INSERT clause.
+INSERT INTO my_employee (id, last_name, first_name,
+userid, salary)
+VALUES (2, 'Dancs', 'Betty', 'bdancs', 860);
+
+Update and delete data in the MY_EMPLOYEE table.
+10.	Change the last name of employee 3 to Drexler.
+UPDATE my_employee
+SET	last_name = 'Drexler' WHERE	id = 3;
+
+11.	Change the salary to $1,000 for all employees with a salary less than $900.
+UPDATE my_employee SET	salary = 1000
+WHERE	salary < 900;
+
+12.	Delete Betty Dancs from the MY_EMPLOYEE table.
+DELETE
+FROM my_employee
+WHERE last_name = 'Dancs';
+
+13.	Delete all the rows from the MY_EMPLOYEE table.
+DELETE
+FROM my_employee;
+
+
+------------------------------------- procedure ----------------------
+1. Retrieve Employees by Manager
+Objective: Create a stored procedure that retrieves all employees under a specific manager.
+
+Input: p_manager_id IN NUMBER (Manager's employee ID)
+Output: List of employees with their details (Employee ID, First Name, Last Name, Job Title, Salary)
+Business Logic: The procedure should return employees whose manager_id matches the given p_manager_id.
+
+delimiter //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmployeesByManager`(IN p_manager_id INT)
+BEGIN
+    SELECT employee_id, first_name, last_name, job_id, salary
+    FROM employees
+    WHERE manager_id = p_manager_id;
+    
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'No employees found under manager ID ' AS Message;
+    END IF;
+END //
+delimiter //
+
+2. Update Employee Salary
+Objective: Create a stored procedure that updates the salary of a given employee based on their employee ID.
+Input: p_employee_id IN NUMBER, p_new_salary IN NUMBER
+Output: Success message or error message if the employee is not found.
+Business Logic: The procedure should check if the employee exists and then update their salary. If the employee doesn't exist, return an error message.
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateEmployeeSalary(IN p_employee_id INT, IN p_new_salary DECIMAL(10, 2))
+BEGIN
+    UPDATE employees
+    SET salary = p_new_salary
+    WHERE employee_id = p_employee_id;
+    
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'Employee with ID ' AS Message, p_employee_id AS employee_id, ' not found.' AS Status;
+    ELSE
+        SELECT 'Salary updated for employee ID ' AS Message, p_employee_id AS employee_id;
+    END IF;
+END$$
+
+DELIMITER ;
+
+3. Employee Count by Department
+Objective: Create a stored procedure that returns the count of employees in a specific department.
+Input: p_department_id IN NUMBER
+Output: Count of employees in that department.
+Business Logic: The procedure should count the employees in the specified department and return the result.
+
+DELIMITER $$
+
+CREATE PROCEDURE GetEmployeeCountByDepartment(IN p_department_id INT)
+BEGIN
+    DECLARE v_count INT;
+    
+    SELECT COUNT(*)
+    INTO v_count
+    FROM employees
+    WHERE department_id = p_department_id;
+
+    IF v_count = 0 THEN
+        SELECT 'No employees found in department ID ' AS Message, p_department_id AS department_id;
+    ELSE
+        SELECT v_count AS EmployeeCount;
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+
+4. Employee Job Title and Salary Information
+Objective: Create a stored procedure that retrieves employees' job titles and salary information based on a specific job title.
+Input: p_job_id IN VARCHAR2
+Output: List of employees with job title and salary.
+Business Logic: The procedure should return the employee ID, first name, last name, and salary for employees with the specified job title.
+
+DELIMITER $$
+
+CREATE PROCEDURE GetEmployeeJobTitleAndSalary(IN p_job_id VARCHAR(10))
+BEGIN
+    SELECT employee_id, first_name, last_name, salary
+    FROM employees
+    WHERE job_id = p_job_id;
+    
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'No employees found with job ID ' AS Message, p_job_id AS job_id;
+    END IF;
+END$$
+DELIMITER ;
+
+5. Promote Employee
+Objective: Create a stored procedure to promote an employee by changing their job title and salary.
+Input: p_employee_id IN NUMBER, p_new_job_id IN VARCHAR2, p_salary_increase IN NUMBER
+Output: Success or failure message.
+Business Logic: The procedure should check if the employee exists, and then update the job_id and salary based on the provided values. Ensure salary increase is not less than a certain percentage (e.g., 10%).
+DELIMITER $$
+
+CREATE PROCEDURE PromoteEmployee(IN p_employee_id INT, IN p_new_job_id VARCHAR(10), IN p_salary_increase DECIMAL(10, 2))
+BEGIN
+    UPDATE employees
+    SET job_id = p_new_job_id,
+        salary = salary + p_salary_increase
+    WHERE employee_id = p_employee_id;
+
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'Employee with ID ' AS Message, p_employee_id AS employee_id, ' not found.' AS Status;
+    ELSE
+        SELECT 'Employee ID ' AS Message, p_employee_id AS employee_id, ' promoted to ' AS NewJob, p_new_job_id AS new_job_id;
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+6. Employee Payroll Report
+Objective: Create a stored procedure that generates a payroll report for a specific date range.
+Input: p_start_date IN DATE, p_end_date IN DATE
+Output: A list of employees along with their payroll details (Employee ID, Name, Job Title, Salary, Bonus, Total Pay).
+Business Logic: The procedure should return payroll data (including salary and any bonuses) for employees who were active during the specified date range.
+
+DELIMITER $$
+CREATE PROCEDURE GetEmployeePayrollReport(IN p_start_date DATE, IN p_end_date DATE)
+BEGIN
+    SELECT e.employee_id, e.first_name, e.last_name, e.salary, b.bonus, (e.salary + IFNULL(b.bonus, 0)) AS total_pay
+    FROM employees e
+    LEFT JOIN bonuses b ON e.employee_id = b.employee_id
+    WHERE e.hire_date BETWEEN p_start_date AND p_end_date;
+    
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'No employees found within the given date range.' AS Message;
+    END IF;
+END$$
+DELIMITER ;
+CALL GetEmployeePayrollReport('2023-01-01', '2023-12-31');
+
+
+7. Employee Tenure
+Objective: Create a stored procedure that calculates and returns the tenure (in years) for an employee based on their hire date.
+Input: p_employee_id IN NUMBER
+Output: Employee's tenure in years.
+Business Logic: The procedure should calculate the difference between the current date and the employee's hire date, returning the number of years the employee has worked.
+
+DELIMITER $$
+CREATE PROCEDURE GetEmployeeTenure(IN p_employee_id INT)
+BEGIN
+    DECLARE v_tenure DECIMAL(5, 2);
+    
+    SELECT ROUND(DATEDIFF(CURDATE(), hire_date) / 365, 2)
+    INTO v_tenure
+    FROM employees
+    WHERE employee_id = p_employee_id;
+
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'Employee with ID ' AS Message, p_employee_id AS employee_id, ' not found.' AS Status;
+    ELSE
+        SELECT 'Employee ID ' AS Message, p_employee_id AS employee_id, ' has a tenure of ' AS Tenure, v_tenure AS tenure;
+    END IF;
+END$$
+CALL GetEmployeeTenure(104);
+
+
+8. Department Budget Summary
+Objective: Create a stored procedure that calculates and returns the total salary expense for a department.
+Input: p_department_id IN NUMBER
+Output: Total salary expense for the department.
+Business Logic: The procedure should sum the salaries of all employees in the given department and return the total salary expense.
+
+DELIMITER $$
+CREATE PROCEDURE GetDepartmentBudgetSummary(IN p_department_id INT)
+BEGIN
+    DECLARE v_total_salary DECIMAL(15, 2);
+    
+    SELECT SUM(salary)
+    INTO v_total_salary
+    FROM employees
+    WHERE department_id = p_department_id;
+
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'No employees found in department ID ' AS Message, p_department_id AS department_id;
+    ELSE
+        SELECT 'Total salary expense for department ' AS Message, p_department_id AS department_id, ' is ' AS TotalSalary, v_total_salary AS total_salary;
+    END IF;
+END$$
+DELIMITER ;
+CALL GetDepartmentBudgetSummary(10);
+
+9. Find Employees with No Manager
+Objective: Create a stored procedure that identifies employees who do not have a manager assigned.
+Input: None
+Output: List of employees without a manager (Employee ID, Name, Job Title).
+Business Logic: The procedure should return a list of employees whose manager_id is NULL.
+
+DELIMITER $$
+
+CREATE PROCEDURE GetEmployeesWithNoManager()
+BEGIN
+    SELECT employee_id, first_name, last_name, job_id
+    FROM employees
+    WHERE manager_id IS NULL;
+    
+    IF ROW_COUNT() = 0 THEN
+        SELECT 'No employees found with no manager.' AS Message;
+    END IF;
+END$$
+
+DELIMITER ;
+CALL GetEmployeesWithNoManager();
+
+10. Employee Turnover Rate
+Objective: Create a stored procedure that calculates the turnover rate for a department within a given period.
+Input: p_department_id IN NUMBER, p_start_date IN DATE, p_end_date IN DATE
+Output: Turnover rate as a percentage of the total number of employees in that department who left during the specified period.
+Business Logic: The procedure should calculate the number of employees who left the department within the given date range and divide by the total number of employees in the department during that period.
+
+DELIMITER $$
+
+CREATE PROCEDURE GetEmployeeTurnoverRate(IN p_department_id INT, IN p_start_date DATE, IN p_end_date DATE)
+BEGIN
+    DECLARE v_employees_left INT;
+    DECLARE v_total_employees INT;
+    DECLARE v_turnover_rate DECIMAL(5, 2);
+
+    -- Employees who left the department in the given date range
+    SELECT COUNT(*)
+    INTO v_employees_left
+    FROM employees
+    WHERE department_id = p_department_id
+    AND hire_date BETWEEN p_start_date AND p_end_date;
+
+    -- Total employees in the department
+    SELECT COUNT(*)
+    INTO v_total_employees
+    FROM employees
+    WHERE department_id = p_department_id;
+
+    -- Calculate turnover rate
+    IF v_total_employees > 0 THEN
+        SET v_turnover_rate = (v_employees_left / v_total_employees) * 100;
+        SELECT 'Turnover rate for department ' AS Message, p_department_id AS department_id, ': ' AS Rate, v_turnover_rate AS turnover_rate;
+    ELSE
+        SELECT 'No employees found in department ' AS Message, p_department_id AS department_id;
+    END IF;
+END$$
+
+DELIMITER ;
+
+CALL GetEmployeeTurnoverRate(30, '2023-01-01', '2023-12-31');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

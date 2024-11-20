@@ -1,0 +1,375 @@
+﻿assignment 1
+
+
+1.display all movies with rating=4
+movie> db.movieCollec.find({rating: 4})
+[
+  {
+    _id: ObjectId('5bf6a36f57b2d4cc676c7a95'),
+    name: 'Andhadhund',
+    price: 250,
+    actor: [ 'Ayushman', 'radhika' ],
+    rating: 4
+  },
+  {
+    _id: ObjectId('5ca47e5b2952ebdd7ae2a931'),
+    name: 'padmavat',
+    rating: 4,
+    price: 100,
+    ticket_no: 300,
+    actor: [
+      'Deepika',
+      'shahid kapoor',
+      'ranveer singh',
+      'aditi Rao',
+      'aaaaa'
+    ],
+    cancellation: { date: Timestamp({ t: 1567175239, i: 1 }) }
+  },
+  {
+    _id: ObjectId('5bf6a38c57b2d4cc676c7a96'),
+    name: 'Andhadhund',
+    price: null,
+    actor: [ 'Tabbu' ],
+    rating: 4
+  }
+]
+movie>
+
+
+
+
+
+
+2.display all movies with rating=3 and price=200
+movie> db.movieCollec.find({rating : 3, price: 200})
+[
+  {
+    _id: ObjectId('5aaa31ee639395f86922a87f'),
+    name: '3 idiots',
+    actor: [ 'Kareena Kapoor', 'amir', 'kareena', 'mahadavan', 'sharman' ],
+    rating: 3,
+    ticket_no: 150,
+    price: 200
+  }
+]
+
+
+
+
+
+
+3.display all movies with rating>3 and price=540 
+movie> db.movieCollec.find({rating :{$gt : 3}, price:540},{name:1, _id:0}).pretty()
+
+
+
+
+4.display all movies with rating>3 and price>300
+
+
+
+
+
+
+5.display all movies with price > 200 and < 400
+movie> db.movieCollec.find({price :{$gt : 200 , $lt : 400}}).pretty()
+
+
+
+
+6.display all movies with price = 200 or 540 or 400
+movie> db.movieCollec.find({price : {$in: [200, 540, 400]}}).pretty()
+
+
+
+
+7.display all movies with price not = 200 nor 540  nor 400
+movie> db.movieCollec.find({price : {$nin: [200, 540, 400]}}).pretty()
+
+
+
+
+8.display count of  movies with price not = 200 nor 540  nor 400
+sol: use count method as follows
+     db.movie.find().count()
+movie> db.movieCollec.find({price : {$nin: [200, 540, 400]}}).pretty().count()
+
+
+
+
+9.display all movies with rating=2 or price>200
+movie> db.movieCollec.find({rating : 2, price :{$gt : 200}})
+[
+  {
+    _id: ObjectId('5ca456072952ebdd7ae2a930'),
+    name: 'paa',
+    actor: [ 'Amitabh', 'vidya balan', 'Abhishek' ],
+    rating: 2,
+    price: 290,
+    ticket_no: 210,
+    rdate: ISODate('2019-01-23T00:00:00.000Z'),
+    others: { director: 'R Balki', songs: 'Amit trivedi' }
+  }
+]
+
+
+
+
+10.display all movies with price not > 200 and < 400
+
+
+11.display all movies with rating is odd
+movie> db.movieCollec.find({rating : {$mod : [2, 1]}})
+[
+  {
+    _id: ObjectId('5c865923d82c19b8ed996550'),
+    name: 'Dil dhadakane do',
+    rating: 3,
+    price: 190,
+    actor: "['Anil kapoor']"
+  },
+  {
+    _id: ObjectId('5aab6da4639395f86922a883'),
+    name: 'kahani 2',
+    ticket_no: 820,
+    actor: [
+      'vidya',  'Arjun',
+      'Jonny',  'nawaz',
+      'prasad', 'Shreyas',
+      'Jonny',  'yash'
+    ],
+    rating: 11,
+    price: 250
+  },
+  {
+    _id: ObjectId('5aaa3334639395f86922a882'),
+    name: 'aradhana',
+    actor: [ 'amitabh', 'prem', 'rajesh khanna' ],
+    rating: 3,
+    ticket_no: 550,
+    price: 110
+  },
+  {
+    _id: ObjectId('5c8283789eb55675f0272933'),
+    name: 'uri',
+    rating: 5,
+    actor: [ 'vicky kaushal', 'yami', 'Paresh Rawal' ]
+  },
+  {
+    _id: ObjectId('5aaa31ee639395f86922a87f'),
+    name: '3 idiots',
+    actor: [ 'Kareena Kapoor', 'amir', 'kareena', 'mahadavan', 'sharman' ],
+    rating: 3,
+    ticket_no: 150,
+    price: 200
+  }
+]
+
+
+
+
+12.display all movies in which amitabh has acted
+movie> db.movieCollec.find({actor : 'Amitabh'})
+
+
+13.display all movies in which amitabh has acted display in ascending order of price
+movie> db.movieCollec.find({actor : 'Amitabh'}).sort()
+
+
+14.display all movies in which amitabh has acted display in descending order of price
+movie> db.movieCollec.find({actor : 'Amitabh'}).sort({rating : 1})
+
+
+
+
+15.display all movies in which amitabh has acted display only 1st document
+movie> db.movieCollec.find({actor : 'Amitabh'}).limit(1)
+
+
+
+
+16.display all movies in which amitabh has acted display only 1st  5 document
+
+
+
+
+
+
+17.Display top 5 highest rating movies.
+movie> db.movieCollec.find().sort({rating:-1}).limit(5).pretty()
+
+
+18.Display  lowest 3 rating movies.
+movie> db.movieCollec.find().sort({rating:1}).limit(3).pretty()
+
+
+
+
+19.For movie "kahani 2" change rating to 5.
+movie> db.movieCollec.update({name: 'kahani 2'}, {$set:{rating: 5}}, {multi : true})
+
+
+
+
+
+
+20.Change price =400 and increase rating by 2 for all movies with name Kahani in it.
+movie> db.movieCollec.update({name: 'kahani 2'}, {$set:{rating: 2 , price : 400}}, {multi : true})
+
+
+
+
+21.Decrease price of all movies by Rs. 40.
+movie> db.movieCollec.updateMany({$inc : {price: -50, multi:true})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:58)
+
+
+> 1 | db.movieCollec.updateMany({$inc : {price: -50, multi:true})
+    |                                                           ^
+  2 |
+
+
+movie> db.movieCollec.updateMany({}, {$inc : {price : -40}})
+MongoServerError: Cannot apply $inc to a value of non-numeric type. {_id: ObjectId('5bf6a38c57b2d4cc676c7a96')} has the field 'price' of non-numeric type null
+movie> db.movieCollec.updateMany({price: {$in: [null, ""]}}, {$set: {price: 0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+movie> db.movieCollec.updateMany({price: {$type: 'number'}}, {$inc: {price: -40}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 18,
+  modifiedCount: 18,
+  upsertedCount: 0
+}
+movie>
+
+
+
+
+
+
+22.Increase the price by 10% of price
+movie> db.movieCollec.updateMany({price: {$type: 'number'}}, {$inc: {price: *0.10}})
+Uncaught:
+SyntaxError: Unexpected token (1:69)
+
+
+> 1 | db.movieCollec.updateMany({price: {$type: 'number'}}, {$inc: {price: *0.10}})
+    |                                                                      ^
+  2 |
+
+
+movie> db.movieCollec.updateMany({price: {$type: 'number'}}, {$inc: {price: price*0.10}})
+ReferenceError: price is not defined
+movie> db.movieCollec.updateMany({price: {$type: 'number'}}, {$mul: {price: 1.10}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 18,
+  modifiedCount: 18,
+  upsertedCount: 0
+}
+
+
+23. to display all movies with amitabh acted in it and is at 1 st index position in array
+db.movie.find({'actor':/^[Aa]mitabh'}).skip(4).limit(3)
+movie> db.movieCollec.find({actor: /^[Aa]mitabh/})
+
+
+
+
+24. to find all movies starts with digit
+movie> db.movieCollec.find({name: /^[0-9]/})
+[
+  {
+    _id: ObjectId('5aaa31ee639395f86922a87f'),
+    name: '3 idiots',
+    actor: [ 'Kareena Kapoor', 'amir', 'kareena', 'mahadavan', 'sharman' ],
+    rating: 3,
+    ticket_no: 150,
+    price: 176
+  }
+]
+movie>
+ 
+
+
+25. to find all movies with name start with digit and ends with s
+movie> db.movieCollec.find({name: /^\d.*s$/})  
+
+
+26. to find all movies with name start with alphabate 
+movie> db.movieCollec.find({name: /^[a-z]/})
+
+
+
+
+27.Change rating of movie Kesari to 2  
+movie> db.movieCollec.updateOne({name: 'Kesari'},{$set : {rating: 2}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+
+
+28.increase the price of all tickits by Rs 20 for Amitabh's movie. 
+movie> db.movieCollec.updateMany({actor: 'Amitabh'}, {$inc : {price: 20}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+
+
+
+
+29.Delete key rating for movie Kesari
+movie> db.movieCollec.updateOne({name: 'Kesari'}, {$unset: {rating: ""}})
+
+
+30.Increase price by 50 and change rating to 7 for movie 3 idiots.
+movie> db.movieCollec.updateMany({name: '3 idiots'}, {$inc: {price: 50}}, {$set: {rating: 7}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+movie>
+
+
+
+
+
+
+31.Delete first value from array
+movie> db.movieCollec.updateMany({}, { $pop: { ratings: -1 } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 18,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+movie>
+
+
+ 
+32.Change price =400 and increase rating by 2 for all movies with name Kahani in it.
+movie> db.movieCollec.updateMany({name: 'kahani'}, {$set: {price: 200}}, {$inc: {rating: 2}})
