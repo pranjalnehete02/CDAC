@@ -1,0 +1,19 @@
+body{
+    background-color: lightpink;
+}
+
+.parent{
+    display: inline-block;
+    background-color: rgb(110, 99, 214);
+    height: 300px;
+    width: 300px;
+    margin: 70px;
+    padding: 30px ;
+
+}
+
+.child{
+    background-color: lightblue;
+    height: 300px;
+    width: 300px;
+}

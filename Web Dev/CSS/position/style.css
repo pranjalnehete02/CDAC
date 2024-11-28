@@ -1,0 +1,21 @@
+body{
+    background-color: lightpink;
+}
+
+.parent{
+    background-color: linen;
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.child{
+    background-color: lightblue;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* right : 0; */
+    left: 0;
+    bottom: 0;
+
+}
