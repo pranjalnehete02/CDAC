@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+}
+
+.Parent{
+    background-color: lightpink;
+}
+
+.child{
+    background-color: lightblue;
+
+    margin: 30px;
+    padding: 10px 10px 10px 10px;
+}
