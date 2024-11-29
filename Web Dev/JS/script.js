@@ -98,3 +98,5 @@ thisExample1.getThis();
 //Arrow function by default refers the parent obj
 // browser -> Window
 // PC -> {}
+
+//PURPOSE OF THIS is to access the current exe obj
