@@ -10,14 +10,12 @@
 // accountId =  PRN + 1
 // console.log(accountId)
 
-
 const items = {
-    food: 2000,
-    cooldrinks: 3000,
+  food: 2000,
+  cooldrinks: 3000,
 };
 
 var cart = 0;
-
 
 // function addToCart(a,b) {
 //     console.log("I'm new functionality");
@@ -31,19 +29,16 @@ var cart = 0;
 // // cart = cart + items.food;
 // // cart = cart + items.cooldrinks;
 
-// addToCart(items.cooldrinks, items.food); 
+// addToCart(items.cooldrinks, items.food);
 
 // console.log("cart: ", cart);
-
 
 //Normal way to define function
 //--------------------------------------------
 // function addToCart(item){
 //     cart = cart + item;
-    
+
 // }
-
-
 
 //arrow function
 const addToCart = (item) => cart + item;
@@ -56,4 +51,24 @@ addToVal(items.cooldrinks);
 
 console.log(cart);
 
+//------------------------------------------------
+//hoisting
+//even though the code is written i down after the call
+//then also in the backend it automatically bring the function up
 
+addToCart1();
+function addToCart1(item) {
+  cart = cart + item;
+}
+
+//hoisting why not in arrow function
+// sayHii();
+// const sayHii = () => console.log("Hiii");
+/*
+This will throughthe following error:
+script.js:65 Uncaught ReferenceError: Cannot access 'sayHii' before initialization
+    at script.js:65:1
+*/
+
+//--------------------------------------------------------
+//this
