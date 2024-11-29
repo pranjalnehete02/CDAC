@@ -100,3 +100,35 @@ thisExample1.getThis();
 // PC -> {}
 
 //PURPOSE OF THIS is to access the current exe obj
+
+//-----------------------------------------------------------
+
+//ARRAY
+
+const array1 = [1, 2, 3, 4, 5, 6, 7];
+console.log(array1);
+/*
+
+length()
+toString()
+at()
+join()
+pop()
+push()
+unshift()
+delete()
+
+*/
+
+//foreach
+array1.forEach((Element) => console.log(Element));
+//print the array in row by row
+
+// const forEachArray = array1.forEach((Element) => Element + 1);
+// console.log(forEachArray);
+//output will be undefined
+//---------------------------------------------------
+//MAP
+console.log("-------------------");
+array1.map((Element) => console.log(Element));
+console.log(array1);
