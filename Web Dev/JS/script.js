@@ -41,25 +41,25 @@ var cart = 0;
 // }
 
 //arrow function
-const addToCart = (item) => cart + item;
+// const addToCart = (item) => cart + item;
 
-const addToVal = (item) => (cart = addToCart(item));
+// const addToVal = (item) => (cart = addToCart(item));
 
-addToVal(items.food);
-// addToCart(items.food);
-addToVal(items.cooldrinks);
+// addToVal(items.food);
+// // addToCart(items.food);
+// addToVal(items.cooldrinks);
 
-console.log(cart);
+// console.log(cart);
 
-//------------------------------------------------
-//hoisting
-//even though the code is written i down after the call
-//then also in the backend it automatically bring the function up
+// //------------------------------------------------
+// //hoisting
+// //even though the code is written i down after the call
+// //then also in the backend it automatically bring the function up
 
-addToCart1();
-function addToCart1(item) {
-  cart = cart + item;
-}
+// addToCart1();
+// function addToCart1(item) {
+//   cart = cart + item;
+// }
 
 //hoisting why not in arrow function
 // sayHii();
@@ -72,3 +72,29 @@ script.js:65 Uncaught ReferenceError: Cannot access 'sayHii' before initializati
 
 //--------------------------------------------------------
 //this
+//console.log(this);
+//o/p will be window function
+const thisExample = {
+  name: "Pranjal",
+  getThis: function () {
+    console.log(this);
+  },
+};
+
+thisExample.getThis();
+//this will print the thisExample
+//*******************/
+//if above example converted into arrow function the
+//output will be window function
+
+const thisExample1 = {
+  name: "Pranjal",
+  getThis: () => {
+    console.log(this);
+  },
+};
+
+thisExample1.getThis();
+//Arrow function by default refers the parent obj
+// browser -> Window
+// PC -> {}
