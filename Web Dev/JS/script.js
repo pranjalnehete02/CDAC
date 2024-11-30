@@ -198,4 +198,4 @@ function hello3 (items = "default") {
   
 }
 
-hello3(items);
+hello3(items);  
