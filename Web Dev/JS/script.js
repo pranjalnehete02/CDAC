@@ -105,30 +105,93 @@ thisExample1.getThis();
 
 //ARRAY
 
-const array1 = [1, 2, 3, 4, 5, 6, 7];
-console.log(array1);
-/*
+// const array1 = [1, 2, 3, 4, 5, 6, 7];
+// console.log(array1);
+// /*
 
-length()
-toString()
-at()
-join()
-pop()
-push()
-unshift()
-delete()
+// length()
+// toString()
+// at()
+// join()
+// pop()
+// push()
+// unshift()
+// delete()
 
-*/
+// */
 
-//foreach
-array1.forEach((Element) => console.log(Element));
-//print the array in row by row
+// //foreach
+// array1.forEach((Element) => console.log(Element));
+// //print the array in row by row
 
-// const forEachArray = array1.forEach((Element) => Element + 1);
-// console.log(forEachArray);
-//output will be undefined
-//---------------------------------------------------
-//MAP
-console.log("-------------------");
-array1.map((Element) => console.log(Element));
-console.log(array1);
+// // const forEachArray = array1.forEach((Element) => Element + 1);
+// // console.log(forEachArray);
+// //output will be undefined
+// //---------------------------------------------------
+// //MAP
+// console.log("-------------------");
+// array1.map((Element) => console.log(Element));
+// console.log(array1);
+
+// console.log("-------------------");
+// console.log("-------------------");
+
+// //----------------------------------------------------------------
+//  const x = array1.forEach((Element) => console.log(Element));
+//  console.log("-------------------");
+
+//  const y = array1.map((Element) => console.log(Element));
+
+//  console.log(x);
+//  console.log(y);
+
+//  //================================================================
+
+// Objects
+
+const student = {
+  name: "John",
+  age: 20,
+  grade: 85,
+};
+
+console.log(Object.keys(student));
+console.log(Object.values(student));
+console.log(Object.entries(student));
+
+const student1 = {
+  name: "John1",
+  age: 201,
+  grade: 851,
+};
+
+Object.freeze(student1);
+
+//now this can't be modified further
+
+//----------------------------------------------------------------
+
+//                BY PARAMETERS
+
+function hello() {
+  console.log(items);
+}
+
+hello(items);
+
+//                Default parameters
+
+// //traditional way
+// function hello1(){
+//   if(!items){
+//     items = "default";
+//   }
+//   console.log(items);
+// }
+// hello1(items);
+
+function hello3(items = "default") {
+  console.log(items);
+}
+
+hello3(items);
