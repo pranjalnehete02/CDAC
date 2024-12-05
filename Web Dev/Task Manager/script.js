@@ -92,6 +92,7 @@ const deleteCard = (event) => {
   );
 
   globalStore = newUpadate;
+  localStorage.setItem("taskItems", JSON.stringify({ cards: globalStore }));
   // access DOM to remove cards
 
   if (tagName === "BUTTON") {
