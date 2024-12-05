@@ -1,3 +1,5 @@
+const taskContainer = document.getElementsByClassName("task_container");
+
 const saveChanges = () => {
   const taskData = {
     id: `${Date.now()}`, // This will provide a unique ID for every task we create
