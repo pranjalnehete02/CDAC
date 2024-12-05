@@ -2,7 +2,7 @@ const taskContainer = document.querySelector(".task_container");
 console.log(taskContainer);
 
 //browser global storage
-const globalStore = [];
+let globalStore = [];
 
 const newCard = ({
   id,
@@ -16,7 +16,7 @@ const newCard = ({
     <button type="button" class="btn btn-outline-success">
       <i class="fa-solid fa-pen"></i>
     </button>
-    <button type="button" class="btn btn-outline-danger">
+    <button type="button" id=${id}class="btn btn-outline-danger">
       <i class="fa-solid fa-trash"></i>
     </button>
   </div>
@@ -77,4 +77,24 @@ const saveChanges = () => {
       cards: globalStore,
     })
   );
+};
+
+const deleteCard = (event) => {
+  //id
+  event = window.event;
+  const targetID = event.target.id;
+  //search the globalStorage,
+  //remove which is matches
+
+  const newUpadate = globalStore.filter(
+    (cardObject) => cardObject.id !== targetID
+  );
+
+  newUpadate.map((cardObject) => {
+    const createNewCard = newCard(cardObject);
+    taskContainer.insertAdjacentHTML("beforeend", createNewCard);
+  });
+
+  globalStore = newUpadate;
+  //loop over global storage and then inject he updaed global storage to DOM
 };
