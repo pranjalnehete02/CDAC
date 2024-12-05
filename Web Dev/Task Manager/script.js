@@ -55,7 +55,10 @@ const saveChanges = () => {
   console.log(globalStore);
 
   //API for saving the global data to the browser
-  localStorage.setItem("taskItems", {
-    cards: globalStore,
-  });
+  localStorage.setItem(
+    "taskItems",
+    JSON.stringify({
+      cards: globalStore,
+    })
+  );
 };
