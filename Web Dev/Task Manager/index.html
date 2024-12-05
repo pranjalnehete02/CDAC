@@ -32,19 +32,41 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="Image_url" class="form-label">Image URL</label>
-              <input type="text" class="form-control" id="Image_url" placeholder="https://upslpah.com">
+              <input
+                type="text"
+                class="form-control"
+                id="Image_url"
+                placeholder="https://upslpah.com"
+              />
             </div>
             <div class="mb-3">
               <label for="Task_title" class="form-label">Task Title</label>
-              <input type="text" class="form-control" id="Task_title" placeholder="Name the Task">
+              <input
+                type="text"
+                class="form-control"
+                id="Task_title"
+                placeholder="Name the Task"
+              />
             </div>
             <div class="mb-3">
               <label for="Task_type" class="form-label">Task Type</label>
-              <input type="text" class="form-control" id="Task_type" placeholder="Enter the Task Type">
+              <input
+                type="text"
+                class="form-control"
+                id="Task_type"
+                placeholder="Enter the Task Type"
+              />
             </div>
             <div class="mb-3">
-              <label for="Task_description" class="form-label">Task Description</label>
-              <input type="text" class="form-control" id="Task_description" placeholder="Elaborte please !!!">
+              <label for="Task_description" class="form-label"
+                >Task Description</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="Task_description"
+                placeholder="Elaborte please !!!"
+              />
             </div>
           </div>
           <div class="modal-footer">
@@ -55,7 +77,13 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="saveChanges()"
+            >
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
@@ -85,7 +113,6 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
 
     <!--Own CSS-->
     <link rel="stylesheet" href="style.css" />
@@ -190,5 +217,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
