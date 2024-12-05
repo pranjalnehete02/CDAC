@@ -39,6 +39,22 @@ const newCard = ({
   </div>
 </div>`;
 
+const localInitialTasks = () => {
+  //access the local Storage
+  const getInitialData = localStorage.getItem("taskItems");
+  if (!getInitialData) return;
+
+  // convert the stringified object to object
+  const { cards } = JSON.parse(getInitialData);
+
+  //map around the array to generate the HTML cards and inject it into the DOM
+  cards.map((card) => {
+    const createNewCard = newCard(card);
+    taskContainer.insertAdjacentHTML("beforeend", createNewCard);
+    globalStore.push(card);
+  });
+};
+
 const saveChanges = () => {
   const taskData = {
     id: `${Date.now()}`, // This will provide a unique ID for every task we create
