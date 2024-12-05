@@ -53,4 +53,9 @@ const saveChanges = () => {
   taskContainer.insertAdjacentHTML("beforeend", createNewCard);
   globalStore.push(taskData);
   console.log(globalStore);
+
+  //API for saving the global data to the browser
+  localStorage.setItem("taskItems", {
+    cards: globalStore,
+  });
 };
