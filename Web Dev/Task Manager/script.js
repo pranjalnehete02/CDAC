@@ -16,8 +16,8 @@ const newCard = ({
     <button type="button" class="btn btn-outline-success">
       <i class="fa-solid fa-pen"></i>
     </button>
-    <button type="button" id=${id}class="btn btn-outline-danger">
-      <i class="fa-solid fa-trash"></i>
+    <button type="button" id=${id} class="btn btn-outline-danger" onclick="deleteCard.apply(this, arguments)">
+      <i class="fa-solid fa-trash" id=${id} onclick="deleteCard.apply(this, arguments)"></i>
     </button>
   </div>
   <img
@@ -82,6 +82,7 @@ const saveChanges = () => {
 const deleteCard = (event) => {
   //id
   event = window.event;
+  const tagName = event.target.tagName;
   const targetID = event.target.id;
   //search the globalStorage,
   //remove which is matches
@@ -90,11 +91,17 @@ const deleteCard = (event) => {
     (cardObject) => cardObject.id !== targetID
   );
 
-  newUpadate.map((cardObject) => {
-    const createNewCard = newCard(cardObject);
-    taskContainer.insertAdjacentHTML("beforeend", createNewCard);
-  });
-
   globalStore = newUpadate;
-  //loop over global storage and then inject he updaed global storage to DOM
+  // access DOM to remove cards
+
+  if (tagName === "BUTTON") {
+    return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
+      event.target.parentNode.parentNode.parentNode
+    );
+  }
 };
+
+//task container
+return event.target.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(
+  event.target.parentNode.parentNode.parentNode.parentNode
+);
