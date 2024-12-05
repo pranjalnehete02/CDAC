@@ -1,6 +1,9 @@
 const taskContainer = document.querySelector(".task_container");
 console.log(taskContainer);
 
+//browser global storage
+const globalStore = [];
+
 const newCard = ({
   id,
   imageUrl,
@@ -48,4 +51,6 @@ const saveChanges = () => {
   const createNewCard = newCard(taskData);
 
   taskContainer.insertAdjacentHTML("beforeend", createNewCard);
+  globalStore.push(taskData);
+  console.log(globalStore);
 };
