@@ -48,10 +48,10 @@ const localInitialTasks = () => {
   const { cards } = JSON.parse(getInitialData);
 
   //map around the array to generate the HTML cards and inject it into the DOM
-  cards.map((card) => {
-    const createNewCard = newCard(card);
+  cards.map((cardObject) => {
+    const createNewCard = newCard(cardObject);
     taskContainer.insertAdjacentHTML("beforeend", createNewCard);
-    globalStore.push(card);
+    globalStore.push(cardObject);
   });
 };
 
