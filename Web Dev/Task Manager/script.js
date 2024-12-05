@@ -7,7 +7,7 @@ const newCard = ({
   taskTitle,
   taskDescription,
   taskType,
-}) => `<div class="col-md-6 col-lg-4">
+}) => `<div class="col-md-6 col-lg-4" id=${id}>
 <div class="card text-center">
   <div class="card-header d-flex justify-content-end gap-2">
     <button type="button" class="btn btn-outline-success">
@@ -18,17 +18,16 @@ const newCard = ({
     </button>
   </div>
   <img
-    src="https://shorturl.at/dZs1I"
+    src= ${imageUrl}
     class="card-img-top"
     alt="..."
   />
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+    <h5 class="card-title">${taskTitle}</h5>
     <p class="card-text">
-      With supporting text below as a natural lead-in to additional
-      content.
+      ${taskDescription}
     </p>
-    <span class="badge text-bg-primary">Amazing</span>
+    <span class="badge text-bg-primary">${taskType}</span>
   </div>
   <div class="card-footer text-body-secondary">
     <button type="button" class="btn btn-outline-primary float-end">
@@ -46,5 +45,7 @@ const saveChanges = () => {
     taskDescription: document.getElementById("Task_description").value,
   };
 
-  console.log(taskData);
+  const createNewCard = newCard(taskData);
+
+  taskContainer.insertAdjacentHTML("beforeend", createNewCard);
 };
