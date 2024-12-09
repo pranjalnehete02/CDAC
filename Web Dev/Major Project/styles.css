@@ -1,0 +1,31 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: large;
+}
+
+h2 {
+  color: #333;
+}
+
+/* Navbar Styling */
+.navbar-brand {
+  font-weight: bold;
+}
+
+.custom-navbar {
+  background-color: transparent !important;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1rem;
+}
+
+/* Footer Styling */
+footer {
+  margin-top: 20px;
+}

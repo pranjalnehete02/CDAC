@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Stock Market Dashboard</title>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="bg-dark text-white p-3">
+      <div class="container">
+        <h1 class="text-center">Real-Time Stock Market Dashboard</h1>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary custom-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="market-status.html">Market Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#use-cases">Use Cases</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">About the Project</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>
+                <b>What is the project about?</b> The Real-Time Stock Market
+                Dashboard is a web application that provides live updates and
+                analytics of stock market data, specifically focused on Indian
+                market indices like Nifty and Sensex. It offers users real-time
+                data, visualizations (charts/graphs), and insights to make
+                informed investment decisions. The platform also includes
+                customizable alerts, market trends, and a responsive,
+                user-friendly interface. The system uses Node.js, React.js, and
+                real-time data streaming via Kafka.
+              </li>
+              <br />
+
+              <li>
+                <b>Why the need?</b> In the fast-paced world of stock trading,
+                timely and accurate information is crucial. The Real-Time Stock
+                Market Dashboard addresses the need for a centralized platform
+                that provides live market updates, trends, and data analytics.
+                It helps investors make informed decisions, track market
+                performance, and stay ahead of market fluctuations, especially
+                in the volatile Indian stock market, ensuring they never miss
+                out on important insights.
+              </li>
+              <br />
+              <li>
+                <b>How are we offering solutions?</b> By using modern
+                technologies like Kafka, MongoDB, and React.js to offer
+                real-time market updates, interactive data visualizations,
+                custom alerts, and a user-friendly interface. The platform is
+                scalable with cloud hosting on AWS, ensuring reliability and
+                efficient tracking of stock trends.
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-center">
+            <!-- Embedded YouTube Video -->
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/ipUuoMCEbDQ?si=GotBs8T9x2jkKV0z"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+            <p>Execution Video</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Use Cases</h2>
+        <p>Explore how this dashboard can be used:</p>
+        <ul>
+          <li>Track live stock prices.</li>
+          <li>Analyze historical data trends.</li>
+          <li>Get actionable insights for investments.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2024 Real-Time Stock Market Dashboard. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+  </body>
+</html>
