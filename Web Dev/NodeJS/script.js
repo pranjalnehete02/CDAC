@@ -1,11 +1,11 @@
-const { add, sub, mult } = require("./math");
+const math = require("./math");
 console.log(
   "The addition of 2 and 3 is",
-  add(2, 3),
+  math.add(2, 3),
   "\n",
   "and the substraction is",
-  sub(4, 2),
+  math.sub(2, 3),
   "\n",
   "The multiplication is ",
-  mult(2, 3)
+  math.mult(2, 3)
 );
