@@ -21,9 +21,9 @@ app.get("/users", (req, res) => {
 });
 
 
-// GET /users/1 - Get the user with id 1
-// GET /users/2 - Get the user with id 2
-//Dynamic Path parameters
+//                              2.GET /users/1 - Get the user with id 1
+//                              GET /users/2 - Get the user with id 2
+//Dynamic Path parameter3
 //GET/api/users:id   --->dynamic
 
 
@@ -35,5 +35,9 @@ app.get("/api/users/:id", (req, res) => {
     }
     return res.json(user);
 });
+
+
+
+
 
 app.listen(port, () => console.log("Server is running !!"));
