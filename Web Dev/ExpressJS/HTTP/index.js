@@ -42,4 +42,4 @@ const myServer = http.createServer(app);
 //   }
 // });
 
-myServer.listen(8800, () => console.log("Server started"));
+app.listen(8800, () => console.log("Server started"));
