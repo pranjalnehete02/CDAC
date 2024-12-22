@@ -50,6 +50,8 @@ show_all_records() {
     fi
 }
 
+
+echo "Pranjal"
 # Main menu loop
 while true; do
     show_menu
