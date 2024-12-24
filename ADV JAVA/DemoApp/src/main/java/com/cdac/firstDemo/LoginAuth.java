@@ -14,7 +14,7 @@ public class LoginAuth extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-		public void Service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 			String user_name = request.getParameter("user_name");
 			String user_pw = request.getParameter("user_pw");
 			
