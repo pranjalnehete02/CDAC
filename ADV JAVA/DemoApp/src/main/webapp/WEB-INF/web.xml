@@ -10,4 +10,14 @@
 	<servlet-name>MyServlet</servlet-name>
     <url-pattern>/fill</url-pattern>  
 </servlet-mapping>
+
+<servlet>
+    <servlet-name>Authntication</servlet-name>
+    <servlet-class>com.cdac.firstDemo.Authntication</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>Authntication</servlet-name>
+    <url-pattern>/Auth</url-pattern>  
+</servlet-mapping>
 </web-app>
