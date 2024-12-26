@@ -2,7 +2,6 @@ package com.cdac.firstDemo;
 
 import java.io.IOException;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,8 +15,8 @@ public class LoginAuth extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//			String user_name = request.getParameter("user_name");
-//			String user_pw = request.getParameter("user_pw");
+			String user_name = request.getParameter("user_name");
+			//String user_pw = request.getParameter("user_pw");
 			
 //			System.out.println(user_name);
 //			System.out.println(user_pw);
@@ -26,7 +25,9 @@ public class LoginAuth extends HttpServlet{
 //			out.println("The user ID is : " + user_name + "The pw is 	: " + user_pw);
 //			
 			
-			RequestDispatcher ReqDisp = request.getRequestDispatcher("Auth");
-			ReqDisp.forward(request, response);
+//			RequestDispatcher ReqDisp = request.getRequestDispatcher("Auth");
+//			ReqDisp.forward(request, response);
+			
+			response.sendRedirect("Auth?user_name=" + user_name);
 		}
 }
