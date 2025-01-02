@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dac.STUDENTSDC\\Desktop\\Kalyani devi\\DOT NET\\Practise\\DAY 1\\BasicClass\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D3578C-8102-45CD-802A-33559547F48C}|BasicClassDemo\\BasicClassDemo.csproj|c:\\users\\dac.studentsdc\\desktop\\kalyani devi\\dot net\\practise\\day 1\\basicclass\\basicclassdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D3578C-8102-45CD-802A-33559547F48C}|BasicClassDemo\\BasicClassDemo.csproj|solutionrelative:basicclassdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D3578C-8102-45CD-802A-33559547F48C}|BasicClassDemo\\BasicClassDemo.csproj|c:\\users\\dac.studentsdc\\desktop\\kalyani devi\\dot net\\practise\\day 1\\basicclass\\basicclassdemo\\payroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D3578C-8102-45CD-802A-33559547F48C}|BasicClassDemo\\BasicClassDemo.csproj|solutionrelative:basicclassdemo\\payroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PayRoll.cs",
+              "DocumentMoniker": "C:\\Users\\dac.STUDENTSDC\\Desktop\\Kalyani devi\\DOT NET\\Practise\\DAY 1\\BasicClass\\BasicClassDemo\\PayRoll.cs",
+              "RelativeDocumentMoniker": "BasicClassDemo\\PayRoll.cs",
+              "ToolTip": "C:\\Users\\dac.STUDENTSDC\\Desktop\\Kalyani devi\\DOT NET\\Practise\\DAY 1\\BasicClass\\BasicClassDemo\\PayRoll.cs",
+              "RelativeToolTip": "BasicClassDemo\\PayRoll.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T09:57:45.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dac.STUDENTSDC\\Desktop\\Kalyani devi\\DOT NET\\Practise\\DAY 1\\BasicClass\\BasicClassDemo\\Program.cs",
+              "RelativeDocumentMoniker": "BasicClassDemo\\Program.cs",
+              "ToolTip": "C:\\Users\\dac.STUDENTSDC\\Desktop\\Kalyani devi\\DOT NET\\Practise\\DAY 1\\BasicClass\\BasicClassDemo\\Program.cs*",
+              "RelativeToolTip": "BasicClassDemo\\Program.cs*",
+              "ViewState": "AgIAADUAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T09:21:13.119Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

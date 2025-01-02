@@ -15,13 +15,23 @@
         <%
             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
             Connection con = null;
-            Statement stmt = null;
+            PreparedStatement stmt = null;
             ResultSet rs = null;
+
             try {
+                // Load the JDBC driver (ensure it's available in the classpath)
                 Class.forName("com.mysql.cj.jdbc.Driver");
+                
+                // Establish database connection
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping", "root", "shopping");
-                stmt = con.createStatement();
-                rs = stmt.executeQuery("SELECT * FROM Products WHERE CategoryId=" + categoryId);
+
+                // Use prepared statement to avoid SQL injection
+                String sql = "SELECT * FROM Products WHERE CategoryId = ?";
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, categoryId); // Set the categoryId parameter
+
+                // Execute query and process the result set
+                rs = stmt.executeQuery();
 
                 while (rs.next()) {
         %>
@@ -32,12 +42,22 @@
         </tr>
         <%
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                out.println("<h3>Error fetching data from the database: " + e.getMessage() + "</h3>");
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                out.println("<h3>JDBC Driver not found: " + e.getMessage() + "</h3>");
                 e.printStackTrace();
             } finally {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (con != null) con.close();
+                // Properly close all resources
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    out.println("<h3>Error closing resources: " + e.getMessage() + "</h3>");
+                    e.printStackTrace();
+                }
             }
         %>
     </table>
